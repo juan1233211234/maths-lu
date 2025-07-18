@@ -2,131 +2,320 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculadora Educativa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página Educativa de Matemáticas</title>
+  </head>
   <style>
     body {
+      background-color: #1f2a35;
+      color: #ffffff;
       font-family: Arial, sans-serif;
-      background-color: #f3f9ff;
-      color: #333;
+      margin: 0; padding: 0;
+      line-height: 1.6;
+    }
+    header, section {
+      max-width: 900px;
+      margin: auto;
       padding: 20px;
     }
-    h1 {
-      color: #005b96;
+    h1, h2, h3 {
+      color: #ffd369;
     }
-    button {
-      background-color: #0074d9;
-      color: white;
+    .operacion {
+      background-color: #2d3e50;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .resultado {
+      background-color: transparent;
+    }
+    .boton {
+      background-color: #ffd369;
       border: none;
       padding: 10px 20px;
-      margin: 5px;
-      border-radius: 8px;
+      margin: 10px 5px 10px 0;
       cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s;
     }
-    button:hover {
-      background-color: #005fa3;
+    .boton:hover {
+      background-color: #f4c64b;
     }
     .seccion {
       display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    .resultado {
-      font-weight: bold;
-      color: green;
-      margin-top: 10px;
+    .visible {
+      display: block;
     }
-    input {
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      margin: 5px;
+    .checkbox-tema {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .grupo-botones {
+      margin: 10px 0;
+    }
+    pre {
+      background: #394a63;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      white-space: pre-wrap;
     }
   </style>
-</head>
 <body>
-  <h1>Calculadora Educativa</h1>
-  <p>Elegí un tema para empezar:</p>
-  <button onclick="mostrarSeccion('operaciones')">Operaciones Combinadas</button>
-  <button onclick="mostrarSeccion('fracciones')">Fracciones</button>
-  <button onclick="mostrarSeccion('algebra')">Álgebra</button>
-  <button onclick="mostrarSeccion('irracionales')">Números Irracionales</button>
 
-  <div id="operaciones" class="seccion">
-    <h2>Operaciones Combinadas</h2>
-    <!-- Contenido existente -->
+<header>
+  <h1>Aprende Matemáticas Paso a Paso</h1>
+</header>
+
+<section class="operacion">
+  <h2>Suma</h2>
+  <p>La suma consiste en juntar dos o más cantidades para obtener un total. Las partes son:</p>
+  <ul>
+    <li><strong>Sumandos</strong>: los números que se suman. Ejemplo: en <em>8 + 9</em>, los sumandos son <strong>8</strong> y <strong>9</strong>.</li>
+    <li><strong>Suma</strong>: el resultado total de sumar los sumandos. Ejemplo: 8 + 9 = <span class="resultado">17</span>.</li>
+  </ul>
+  <p>Para sumar, simplemente sumamos cada sumando juntos.</p>
+</section>
+
+<section class="operacion">
+  <h2>Resta</h2>
+  <p>La resta es quitar una cantidad de otra. Las partes son:</p>
+  <ul>
+    <li><strong>Minuendo</strong>: número al que se le resta algo. Ejemplo: en <em>15 - 6</em>, el minuendo es <strong>15</strong>.</li>
+    <li><strong>Sustraendo</strong>: cantidad que se quita. Ejemplo: 6.</li>
+    <li><strong>Diferencia</strong>: resultado de la resta. Ejemplo: 15 - 6 = <span class="resultado">9</span>.</li>
+  </ul>
+  <p>Para restar, quitamos el sustraendo del minuendo.</p>
+</section>
+
+<section class="operacion">
+  <h2>Multiplicación</h2>
+  <p>La multiplicación es una suma repetida. Las partes son:</p>
+  <ul>
+    <li><strong>Factores</strong>: números que se multiplican. Ejemplo: en <em>3 × 4</em>, los factores son <strong>3</strong> y <strong>4</strong>.</li>
+    <li><strong>Producto</strong>: resultado de multiplicar los factores. Ejemplo: 3 × 4 = <span class="resultado">12</span>.</li>
+  </ul>
+  <p>Multiplicar es sumar un número tantas veces como indica el otro factor.</p>
+</section>
+
+<section class="operacion">
+  <h2>Fracciones y Decimales</h2>
+  <p>Convertir un decimal a fracción:</p>
+  <ul>
+    <li>Ejemplo: 0,1 = 1/10 porque hay un decimal (un cero en denominador).</li>
+    <li>Ejemplo: 0,25 = 25/100, que se puede simplificar a 1/4.</li>
+  </ul>
+  <p>Convertir fracción a decimal: se divide el numerador entre el denominador.</p>
+  <ul>
+    <li>Ejemplo: 1/4 = 0,25</li>
+  </ul>
+</section>
+
+<section class="operacion">
+  <h2>Potencias</h2>
+  <p>Una potencia indica cuántas veces se multiplica un número por sí mismo.</p>
+  <p>Ejemplo: 3² = 3 × 3 = <span class="resultado">9</span></p>
+</section>
+
+<section class="operacion">
+  <h2>Raíces</h2>
+  <p>La raíz cuadrada busca qué número multiplicado por sí mismo da otro número.</p>
+  <p>Ejemplo: √16 = 4 porque 4 × 4 = <span class="resultado">16</span>.</p>
+</section>
+
+<section class="operacion">
+  <h2>Álgebra</h2>
+  <p>El álgebra usa letras para representar números desconocidos. Para resolver una ecuación, se despeja la incógnita paso a paso:</p>
+  <pre>
+2X + 3 = 7
+2X = 7 - 3
+2X = 4
+X = 4 ÷ 2
+X = <span class="resultado">2</span>
+  </pre>
+</section>
+
+<section>
+  <button class="boton" onclick="mostrarSeccion('calculadora')">Calculadora</button>
+  <button class="boton" onclick="mostrarSeccion('ejercicios')">Ejercicios</button>
+</section>
+
+<section id="calculadora" class="seccion">
+  <h2>Calculadora</h2>
+  <p>Escribí tu operación y presioná Enter para calcular:</p>
+  <input type="text" id="entradaCalc" placeholder="Ej: 2+3*4" onkeydown="if(event.key==='Enter') calcular()" />
+  <button onclick="calcular()">Calcular</button>
+  <p id="resultadoCalc"></p>
+</section>
+
+<section id="ejercicios" class="seccion">
+  <h2>Ejercicios</h2>
+  <p>Elegí uno o más temas para practicar:</p>
+  <label><input type="checkbox" class="checkbox-tema" value="suma"> Suma</label>
+  <label><input type="checkbox" class="checkbox-tema" value="resta"> Resta</label>
+  <label><input type="checkbox" class="checkbox-tema" value="multiplicación"> Multiplicación</label>
+  <label><input type="checkbox" class="checkbox-tema" value="potencias"> Potencias</label>
+  <label><input type="checkbox" class="checkbox-tema" value="raíces"> Raíces</label>
+  <label><input type="checkbox" class="checkbox-tema" value="fracciones"> Fracciones</label>
+
+  <p>Seleccioná la dificultad:</p>
+  <div class="grupo-botones">
+    <button class="boton" onclick="seleccionarDificultad('fácil')">Fácil</button>
+    <button class="boton" onclick="seleccionarDificultad('medio')">Medio</button>
+    <button class="boton" onclick="seleccionarDificultad('difícil')">Difícil</button>
   </div>
+  <p id="nivelElegido"></p>
+  <button onclick="generarEjercicio()">Generar ejercicio</button>
+  <div id="contenedorEjercicio"></div>
+  <p id="mensajeResultado" style="margin-top:10px; font-weight:bold;"></p>
+</section>
 
-  <div id="fracciones" class="seccion">
-    <h2>Fracciones</h2>
-    <!-- Contenido existente -->
-  </div>
+<script>
+  let dificultadSeleccionada = "";
 
-  <div id="algebra" class="seccion">
-    <h2>Álgebra</h2>
-    <!-- Contenido existente -->
-  </div>
+  function mostrarSeccion(id) {
+    document.querySelectorAll(".seccion").forEach(s => s.classList.remove("visible"));
+    document.getElementById(id).classList.add("visible");
+    if(id === 'calculadora'){
+      document.getElementById('resultadoCalc').innerText = "";
+      document.getElementById('entradaCalc').value = "";
+    }
+    if(id === 'ejercicios'){
+      document.getElementById('contenedorEjercicio').innerHTML = "";
+      document.getElementById('mensajeResultado').innerText = "";
+      document.getElementById('nivelElegido').innerText = dificultadSeleccionada ? ("Dificultad elegida: " + dificultadSeleccionada) : "";
+    }
+  }
 
-  <div id="irracionales" class="seccion">
-    <h2>Números Irracionales: Extracción de Factores</h2>
-    <p>Cuando tenés una raíz como √72, se puede simplificar extrayendo factores cuadrados:</p>
-    <pre>√72 = √(36 × 2) = √36 × √2 = 6√2</pre>
-    <p>Lo que hicimos fue extraer el factor cuadrado (36) y dejar el resto (√2).</p>
-    <p>✅ Pasos para simplificar una raíz:</p>
-    <ol>
-      <li>Buscá los factores del número.</li>
-      <li>Elegí el mayor cuadrado perfecto.</li>
-      <li>Separá la raíz y simplificá.</li>
-    </ol>
-    <p><strong>Ejemplo adicional:</strong> √50 = √(25×2) = 5√2</p>
+  function calcular() {
+    const entrada = document.getElementById("entradaCalc").value;
+    try {
+      const resultado = eval(entrada);
+      document.getElementById("resultadoCalc").innerText = "Resultado: " + resultado;
+    } catch {
+      document.getElementById("resultadoCalc").innerText = "Error en la operación.";
+    }
+  }
 
-    <h3>Calculadora</h3>
-    <input type="number" id="inputRaiz" placeholder="Escribí un número">
-    <button onclick="simplificarRaiz()">Simplificar Raíz</button>
-    <div class="resultado" id="resultadoRaiz"></div>
+  function seleccionarDificultad(nivel) {
+    dificultadSeleccionada = nivel;
+    document.getElementById("nivelElegido").innerText = "Dificultad elegida: " + nivel;
+  }
 
-    <h3>Ejercicio</h3>
-    <p>Simplificá la raíz √98:</p>
-    <input id="respuestaEjercicio" placeholder="ej: 7√2">
-    <button onclick="verificarEjercicio()">Verificar</button>
-    <div class="resultado" id="resultadoEjercicio"></div>
-  </div>
-
-  <script>
-    function mostrarSeccion(id) {
-      document.querySelectorAll('.seccion').forEach(s => s.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
+  function generarEjercicio() {
+    const temas = Array.from(document.querySelectorAll('.checkbox-tema:checked')).map(cb => cb.value);
+    if (temas.length === 0 || !dificultadSeleccionada) {
+      alert("Seleccioná al menos un tema y una dificultad.");
+      return;
     }
 
-    function simplificarRaiz() {
-      const num = parseInt(document.getElementById("inputRaiz").value);
-      if (isNaN(num) || num < 1) {
-        document.getElementById("resultadoRaiz").innerText = "Escribí un número válido.";
-        return;
-      }
-      let mayorCuadrado = 1;
-      for (let i = 1; i * i <= num; i++) {
-        if (num % (i * i) === 0) {
-          mayorCuadrado = i * i;
-        }
-      }
-      const fuera = Math.sqrt(mayorCuadrado);
-      const dentro = num / mayorCuadrado;
-      let resultado = dentro === 1 ? `${fuera}` : `${fuera}√${dentro}`;
-      document.getElementById("resultadoRaiz").innerText = `Resultado: ${resultado}`;
-    }
+    const tema = temas[Math.floor(Math.random() * temas.length)];
 
-    function verificarEjercicio() {
-      const r = document.getElementById("respuestaEjercicio").value.replace(/\s/g, "");
-      if (r === "7√2" || r === "7*√2" || r === "7*sqrt2" || r === "7sqrt2") {
-        document.getElementById("resultadoEjercicio").innerText = "🎉 ¡Muy bien! ¡Respuesta correcta!";
+    let max = 10;
+    if(dificultadSeleccionada === "medio") max = 20;
+    else if(dificultadSeleccionada === "difícil") max = 50;
+
+    let num1 = Math.floor(Math.random() * max + 1);
+    let num2 = Math.floor(Math.random() * max + 1);
+
+    let pregunta = "", respuesta = 0;
+
+    const multiOperacion = Math.random() < 0.4;
+
+    if (multiOperacion && temas.length > 1) {
+      const tema2 = temas.filter(t => t !== tema)[Math.floor(Math.random() * (temas.length - 1))];
+
+      if (!tema2) {
+        return generarEjercicioSimple(tema, num1, num2);
+      }
+
+      if ((tema === "suma" && tema2 === "resta") || (tema === "resta" && tema2 === "suma")) {
+        let num3 = Math.floor(Math.random() * max + 1);
+        pregunta = `(${num1} + ${num2}) - ${num3}`;
+        respuesta = (num1 + num2) - num3;
+      } else if ((tema === "multiplicación" && tema2 === "suma") || (tema === "suma" && tema2 === "multiplicación")) {
+        let num3 = Math.floor(Math.random() * max + 1);
+        pregunta = `${num1} × ${num2} + ${num3}`;
+        respuesta = (num1 * num2) + num3;
+      } else if ((tema === "multiplicación" && tema2 === "resta") || (tema === "resta" && tema2 === "multiplicación")) {
+        let num3 = Math.floor(Math.random() * max + 1);
+        pregunta = `${num1} × ${num2} - ${num3}`;
+        respuesta = (num1 * num2) - num3;
       } else {
-        document.getElementById("resultadoEjercicio").innerText = "❌ Incorrecto. La respuesta era 7√2.";
+        let num3 = Math.floor(Math.random() * max + 1);
+        pregunta = `${num1} + ${num2} × ${num3}`;
+        respuesta = num1 + (num2 * num3);
       }
+    } else {
+      return generarEjercicioSimple(tema, num1, num2);
     }
-  </script>
+
+    mostrarOpciones(pregunta, respuesta, tema);
+  }
+
+  function generarEjercicioSimple(tema, num1, num2) {
+    let pregunta = "", respuesta = 0;
+
+    if (tema === "suma") {
+      respuesta = num1 + num2;
+      pregunta = `${num1} + ${num2}`;
+    } else if (tema === "resta") {
+      respuesta = num1 - num2;
+      pregunta = `${num1} - ${num2}`;
+    } else if (tema === "multiplicación") {
+      respuesta = num1 * num2;
+      pregunta = `${num1} × ${num2}`;
+    } else if (tema === "potencias") {
+      respuesta = Math.pow(num1, 2);
+      pregunta = `${num1}²`;
+    } else if (tema === "raíces") {
+      respuesta = num1;
+      pregunta = `√${num1 * num1}`;
+    } else if (tema === "fracciones") {
+      respuesta = (num1 / num2).toFixed(2);
+      pregunta = `${num1}/${num2} = ? (decimal)`;
+    }
+
+    mostrarOpciones(pregunta, respuesta, tema);
+  }
+
+  function mostrarOpciones(pregunta, respuesta, tema) {
+    const opciones = [respuesta];
+    while (opciones.length < 4) {
+      let incorrecta;
+      if (typeof respuesta === "number" || !isNaN(respuesta)) {
+        incorrecta = respuesta + Math.floor(Math.random() * 10 - 5);
+        if (incorrecta === respuesta) incorrecta += 1;
+      } else {
+        let respNum = parseFloat(respuesta);
+        incorrecta = (respNum + (Math.random() * 2 - 1)).toFixed(2);
+      }
+      if (!opciones.includes(incorrecta)) opciones.push(incorrecta);
+    }
+    opciones.sort(() => Math.random() - 0.5);
+
+    let html = `<p>Ejercicio de <strong>${tema}</strong>: ¿Cuánto es <strong>${pregunta}</strong>?</p>`;
+    opciones.forEach(op => {
+      html += `<button class="boton" onclick="verificarRespuesta('${op}', '${respuesta}')">${op}</button> `;
+    });
+    document.getElementById("contenedorEjercicio").innerHTML = html;
+    document.getElementById("mensajeResultado").innerText = "";
+  }
+
+  function verificarRespuesta(elegida, correcta) {
+    const mensaje = document.getElementById("mensajeResultado");
+    if (parseFloat(elegida) === parseFloat(correcta)) {
+      mensaje.style.color = "#6ce26c"; // verde claro
+      mensaje.innerText = "¡Muy bien! ¡Respuesta correcta!";
+    } else {
+      mensaje.style.color = "#ff6961"; // rojo suave
+      mensaje.innerText = `Incorrecto. La respuesta correcta era ${correcta}`;
+    }
+  }
+</script>
+
 </body>
 </html>

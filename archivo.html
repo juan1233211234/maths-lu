@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora Educativa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f9ff;
+      color: #333;
+      padding: 20px;
+    }
+    h1 {
+      color: #005b96;
+    }
+    button {
+      background-color: #0074d9;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    .seccion {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .resultado {
+      font-weight: bold;
+      color: green;
+      margin-top: 10px;
+    }
+    input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculadora Educativa</h1>
+  <p>Elegí un tema para empezar:</p>
+  <button onclick="mostrarSeccion('operaciones')">Operaciones Combinadas</button>
+  <button onclick="mostrarSeccion('fracciones')">Fracciones</button>
+  <button onclick="mostrarSeccion('algebra')">Álgebra</button>
+  <button onclick="mostrarSeccion('irracionales')">Números Irracionales</button>
+
+  <div id="operaciones" class="seccion">
+    <h2>Operaciones Combinadas</h2>
+    <!-- Contenido existente -->
+  </div>
+
+  <div id="fracciones" class="seccion">
+    <h2>Fracciones</h2>
+    <!-- Contenido existente -->
+  </div>
+
+  <div id="algebra" class="seccion">
+    <h2>Álgebra</h2>
+    <!-- Contenido existente -->
+  </div>
+
+  <div id="irracionales" class="seccion">
+    <h2>Números Irracionales: Extracción de Factores</h2>
+    <p>Cuando tenés una raíz como √72, se puede simplificar extrayendo factores cuadrados:</p>
+    <pre>√72 = √(36 × 2) = √36 × √2 = 6√2</pre>
+    <p>Lo que hicimos fue extraer el factor cuadrado (36) y dejar el resto (√2).</p>
+    <p>✅ Pasos para simplificar una raíz:</p>
+    <ol>
+      <li>Buscá los factores del número.</li>
+      <li>Elegí el mayor cuadrado perfecto.</li>
+      <li>Separá la raíz y simplificá.</li>
+    </ol>
+    <p><strong>Ejemplo adicional:</strong> √50 = √(25×2) = 5√2</p>
+
+    <h3>Calculadora</h3>
+    <input type="number" id="inputRaiz" placeholder="Escribí un número">
+    <button onclick="simplificarRaiz()">Simplificar Raíz</button>
+    <div class="resultado" id="resultadoRaiz"></div>
+
+    <h3>Ejercicio</h3>
+    <p>Simplificá la raíz √98:</p>
+    <input id="respuestaEjercicio" placeholder="ej: 7√2">
+    <button onclick="verificarEjercicio()">Verificar</button>
+    <div class="resultado" id="resultadoEjercicio"></div>
+  </div>
+
+  <script>
+    function mostrarSeccion(id) {
+      document.querySelectorAll('.seccion').forEach(s => s.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function simplificarRaiz() {
+      const num = parseInt(document.getElementById("inputRaiz").value);
+      if (isNaN(num) || num < 1) {
+        document.getElementById("resultadoRaiz").innerText = "Escribí un número válido.";
+        return;
+      }
+      let mayorCuadrado = 1;
+      for (let i = 1; i * i <= num; i++) {
+        if (num % (i * i) === 0) {
+          mayorCuadrado = i * i;
+        }
+      }
+      const fuera = Math.sqrt(mayorCuadrado);
+      const dentro = num / mayorCuadrado;
+      let resultado = dentro === 1 ? `${fuera}` : `${fuera}√${dentro}`;
+      document.getElementById("resultadoRaiz").innerText = `Resultado: ${resultado}`;
+    }
+
+    function verificarEjercicio() {
+      const r = document.getElementById("respuestaEjercicio").value.replace(/\s/g, "");
+      if (r === "7√2" || r === "7*√2" || r === "7*sqrt2" || r === "7sqrt2") {
+        document.getElementById("resultadoEjercicio").innerText = "🎉 ¡Muy bien! ¡Respuesta correcta!";
+      } else {
+        document.getElementById("resultadoEjercicio").innerText = "❌ Incorrecto. La respuesta era 7√2.";
+      }
+    }
+  </script>
+</body>
+</html>
